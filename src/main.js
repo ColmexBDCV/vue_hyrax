@@ -1,7 +1,8 @@
 
-import routes from './router/routes'
-import App from './App.vue'
-import { store } from './store/store'
+import routes from './router/routes.js'
+import App from './App.vue.js'
+import Doc from './Doc.vue.js'
+import { store } from './store/store.js'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true;
@@ -13,6 +14,6 @@ var app = new Vue({
 	router:routes,
 	components: {
 		'App': App,
-		
+		'Doc': Doc		
 	}
 })

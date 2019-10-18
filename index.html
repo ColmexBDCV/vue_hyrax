@@ -22,9 +22,9 @@
 		<div class="header">
 			<img src="./src/assets/logo-inst.svg" class="logo-props"></img>
 		</div>
-		<App>			
-		</App>
-
+		<router-view></router-view>
+		<!--<App></App>
+		<Doc></Doc>-->
 	</div>
 
 </body>
@@ -41,6 +41,42 @@
 				<helperbar :pages = "repo.pages" ref="pagination" :total = "repo.total_pages"></helperbar>
 				<docs :docs="repo.docs"></docs>
 				<pages :pages = "repo.pages" ref="pagination" :total = "repo.total_pages"></pages>
+			</div>
+		</div>		
+	</div>
+</template>
+<template id="docview">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<button type="button" class="btn btn-search">
+					<router-link to="/" style="">Regresar</router-link>
+				</button>
+			</div>
+			<div class="col-sm-3 ">
+							
+			</div>
+			<div class="col-sm-9">				
+				<div><h3>{{doc.title[0]}}</h3></div>
+				<table class="table">
+						<tbody>
+							<tr v-for="(metadata, key, index) in doc" v-if="filter_key(metadata,key)" >
+								<th>
+									{{ key }} 
+								</th>
+								<td v-if="typeof metadata == 'object'">
+									<p v-for="m in metadata">
+										{{ m }}
+									</p>
+								</td>
+								<td v-else>
+									<p>
+										{{ metadata }}
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 			</div>
 		</div>		
 	</div>
@@ -95,7 +131,7 @@
 <template id="docs">
 	<div>
 		<div class="row" v-for="doc in docs">
-			<h2> {{ doc.title[0] }}</h2>
+			<router-link :to="{path: 'docs', query: {id: doc.id, has_model: doc.has_model}}"><h2> {{ doc.title[0] }}</h2></router-link>
 			<div class="col-sm-3">
 				<img class="img-responsive" :src="'http://biblio-rep.colmex.mx'+ doc.thumbnail_path_ss ">
 			</div>
@@ -104,7 +140,7 @@
 					<tbody>
 						<tr v-for="(metadata, key, index) in doc" v-if="check_metadata(metadata, key)">
 							<th>
-								{{ key }}
+								{{ key }} 
 							</th>
 							<td v-if="isObject(metadata)">
 								<p v-for="m in metadata">
@@ -195,16 +231,8 @@
 						Ordenar por {{ order }} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li>
-							<router-link style="color: #333;" to="/order" append >
-								<span @click="order_by('score desc, system_create_dtsi desc', 'Relevancia')">Relevancia</span>
-							</router-link>
-						</li>
-						<li>
-							<router-link style="color: #333;" to="/order" append >
-								<span @click="order_by('date_created_sim desc', 'Año Desc')">Año Desc</span>
-							</router-link>
-						</li>
+						<li><a href="#" @click="order_by('score desc, system_create_dtsi desc', 'Relevancia')">Relevancia</a></li>
+						<li><a href="#" @click="order_by('date_created_sim desc', 'Año Desc')">Año Desc</a></li>
 						<li><a href="#" @click="order_by('date_created_sim asc', 'Año Asc')">Año Asc</a></li>
 						<li><a href="#" @click="order_by('title_sim asc', 'Titulo [A-Z]')">Titulo [A-Z]</a></li>
 						<li><a href="#" @click="order_by('title_sim desc','Titulo [Z-A]')">Titulo [Z-A]</a></li>

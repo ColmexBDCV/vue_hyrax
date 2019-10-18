@@ -2,6 +2,7 @@ export default {
     namespaced: true,
     state: {
         repo: '',
+        base_url: 'http://biblio-rep.colmex.mx/',
         url: "http://biblio-rep.colmex.mx/catalog.json",
         modalFacets: false
     },
@@ -25,6 +26,9 @@ export default {
         },
         modalFacets(state){
             return state.modalFacets
+        },
+        base_url(state){
+            return state.base_url;
         }
     },
     actions: {

@@ -1,16 +1,15 @@
-import App from '../App.vue';
-import helperbar from '../components/helperbar.vue'
+import App from '../App.vue.js';
+import Doc from '../Doc.vue.js'
 
 var routes = [
   {
     path: '/',
-    name: 'home',
     component: App
   },
   {
-    path: '/order',
-    name: 'order',
-    component: helperbar
+    path: '/docs',
+    component: Doc,
+    props: (route) => ({ id: route.query.id, has_model: route.query.has_model })
   }
 ]
 

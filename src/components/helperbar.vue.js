@@ -46,7 +46,6 @@ export default{
             
             this.$store.dispatch('principal/get_data');
             this.order = order;
-            this.$router.push({name:'order'})
         }
     },
     watch: {

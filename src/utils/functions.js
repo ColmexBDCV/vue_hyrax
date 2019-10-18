@@ -25,83 +25,19 @@ function facet_filter(key) {
     ].includes(key);
 }
 
-function getAllUrlParams(url) {    
-    // get query string from url (optional) or window
-    var queryString = url ? url.split("?")[1] : window.location.search.slice(1);
-
-    // we'll store the parameters here
-    var params = {};
-
-    // if query string exists
-    if (queryString) {
-        // stuff after # is not part of query string, so get rid of it
-        queryString = queryString.split("#")[0];
-
-        // split our query string into its component parts
-        var arr = queryString.split("&");
-
-        for (var i = 0; i < arr.length; i++) {
-            // separate the keys and the values
-            var a = arr[i].split("=");
-
-            // in case params look like: list[]=thing1&list[]=thing2
-            var paramNum = undefined;
-            var paramName = a[0].replace(/\[\d*\]/, function (v) {
-                paramNum = v.slice(1, -1);
-                return "";
-            });
-
-            // set parameter value (use 'true' if empty)
-            var paramValue = typeof a[1] === "undefined" ? true : a[1];
-
-            // (optional) keep case consistent
-            // paramName = paramName.toLowerCase();
-            // paramValue = paramValue.toLowerCase();
-            paramName = paramName.replace("f%5B", "").replace("%5D%5B%5D", "");
-
-            // if parameter name already exists
-            if (params[paramName]) {
-                // convert value to array (if still string)
-                if (typeof params[paramName] === "string") {
-                    params[paramName] = [params[paramName]];
-                }
-                // if no array index number specified...
-                if (typeof paramNum === "undefined") {
-                    // put the value on the end of the array
-                    params[paramName].push(paramValue);
-                }
-                // if array index number specified...
-                else {
-                    // put the value at that index number
-                    params[paramName][paramNum] = paramValue;
-                }
-            }
-            // if param name doesn't exist yet, set it
-            else {
-                params[paramName] = paramValue;
-            }
-        }
-    }
-    return params;
+function article_filter(key){
+    return [
+        "creator",
+        "resource_type",
+        "identifier",
+        "related_url",
+        "year",
+        "volume",
+        "number",
+        "pages",
+        "contained_in"].includes(key);
 }
 
-function removeParam(key, sourceURL) {
-    var rtn = sourceURL.split("?")[0],
-        param,
-        params_arr = [],
-        queryString = sourceURL.indexOf("?") !== -1 ? sourceURL.split("?")[1] : "";
-    if (queryString !== "") {
-        params_arr = queryString.split("&");
-        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
-            param = params_arr[i].split("=")[0];
-            if (param === key) {
-                params_arr.splice(i, 1);
-            }
-        }
-        rtn = rtn + "?" + params_arr.join("&");
-    }
-    return rtn;
-}
 
 function remove_solr_sufix(key) {
     key = key.replace("_tesim", "");
@@ -139,15 +75,4 @@ function filter_data(datos) {
     datos.facets = new_facets;
 
     return datos;
-}
-
-function params_exists(url) {
-    var lastChars = url.substr(url.length - 5);
-
-    if (lastChars == ".json") {
-
-        return false
-    } else {
-        return true
-    }
 }

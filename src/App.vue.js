@@ -1,8 +1,8 @@
-import search from './components/search.vue'
-import facets from './components/facets.vue'
-import docs from './components/docs.vue'
-import pages from './components/pages.vue'
-import helperbar from './components/helperbar.vue'
+import search from './components/search.vue.js'
+import facets from './components/facets.vue.js'
+import docs from './components/docs.vue.js'
+import pages from './components/pages.vue.js'
+import helperbar from './components/helperbar.vue.js'
 
 export default{
     name: 'App',

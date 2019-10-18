@@ -1,4 +1,4 @@
-import facetModal from './facetModal.vue'
+import facetModal from './facetModal.vue.js'
 
 export default {
     name: "facets",
@@ -6,7 +6,7 @@ export default {
     template: "#facetas",
     components:{
         'facetModal': facetModal
-    },//katrin1987  Katrin1987 
+    },
     data: function(){
         return {
             facet_data: "",
