@@ -63,7 +63,7 @@ export default {
             });
 
 			return response
-        }       
+        },    
     },
     computed:{
         facet_url() {

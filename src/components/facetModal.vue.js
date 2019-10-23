@@ -79,8 +79,12 @@ export default{
 					this.check_prev();
 					break;
 			}
+		},		
+	},
+	computed:{
+		label_title(){
+			return remove_solr_sufix(this.facet_label);
 		}
-		
 	},
 	watch:{
 		isNext(){

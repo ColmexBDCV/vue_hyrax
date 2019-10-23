@@ -1,0 +1,39 @@
+<template  id="docview">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-search">
+                    <router-link to="/" style="color:white; font-style: normal; text-decoration: none;">{{$t('back')}}
+                    </router-link>
+                </button>
+            </div>
+            <div class="col-sm-3 ">
+                    <img class="img-responsive" :src="this.$store.getters['principal/base_url'] + thumbnail">
+            </div>
+            <div class="col-sm-9">
+                <div>
+                    <h3>{{doc.title[0]}}</h3>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(metadata, key, index) in doc" v-if="filter_key(metadata,key)">
+                            <th>
+                                {{ $t(key) }}
+                            </th>
+                            <td v-if="typeof metadata == 'object'">
+                                <p v-for="m in metadata">
+                                    {{ m }}
+                                </p>
+                            </td>
+                            <td v-else>
+                                <p>
+                                    {{ metadata }}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>

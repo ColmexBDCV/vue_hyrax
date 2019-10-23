@@ -9,7 +9,7 @@ var routes = [
   {
     path: '/docs',
     component: Doc,
-    props: (route) => ({ id: route.query.id, has_model: route.query.has_model })
+    props: (route) => ({ id: route.query.id, has_model: route.query.has_model, thumbnail: route.query.thumbnail })
   }
 ]
 

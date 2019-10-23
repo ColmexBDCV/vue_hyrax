@@ -416,6 +416,12 @@
   border-color: #6b163a;
 }
 
+.btn-search:focus{
+  color: #ffffff;
+  background-color: #6b163a;
+  border-color: #6b163a;
+}
+
 .page-link{
   color: #6b163a
 }
@@ -439,6 +445,29 @@
     border: 1px solid #6b163a;
     background-color: #FFFFFF;
 }
+
+.btn-languaje{
+  color: rgb(255, 255, 255);
+  border: 1px solid #6b163a;
+  background-color: #6b163a;
+}
+
+.btn-languaje:hover{
+  color: rgb(255, 255, 255);
+  border: 1px solid #6b163a;
+  background-color: #6b163a;
+}
+
+.btn-languaje:focus{
+  color: rgb(255, 255, 255);
+  border: 1px solid #6b163a;
+  background-color: #6b163a;
+}
+
+.caret-white{
+  border-top:4px solid white;
+}
+
 .dropdown-menu > li > a:hover{
   background-color: #6b163a;
   color: #ffffff;
