@@ -46,6 +46,17 @@ export default{
             
             this.$store.dispatch('principal/get_data');
             this.order = order;
+        },
+        delete_query: function (type, val, label) {
+            this.$store.dispatch('filters/delete_query', {type, val, label});
+        },
+        delete_all(){
+            this.$store.getters['filters/filter'].forEach((data) => {
+                var type = data.type;
+                var val = data.value;
+                var label = data.key;
+                this.$store.dispatch('filters/delete_query', {type, val, label});
+            });
         }
     },
     watch: {
@@ -60,6 +71,9 @@ export default{
         page_to(){
             var array = this.$store.getters['pages/pagesArray'];
             return array[array.length-1];
+        },
+        filters(){
+            return this.$store.getters['filters/filter'];
         }
     }
 }

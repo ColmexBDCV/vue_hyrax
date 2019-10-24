@@ -29,5 +29,9 @@ export default{
     sp: 'Spanish',
     subject_sim: 'Subject',
     close: 'Close',
-    more: 'more'
+    more: 'more',
+    download: 'Download',
+    down_label: 'Download PDF',
+    filters: 'Filters',
+    remove: 'Remove Filter'
 }

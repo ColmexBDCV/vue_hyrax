@@ -2,7 +2,7 @@ import models from './utils/models.js'
 export default{
     name: 'Doc',
     template: '#docview',
-    props: ['id','has_model', 'thumbnail'],
+    props: ['id','has_model', 'thumbnail', 'related'],
     data: function(){
         return {
             url_doc: this.$store.getters['principal/base_url']+'concern/',

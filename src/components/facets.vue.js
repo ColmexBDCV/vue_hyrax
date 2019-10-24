@@ -16,7 +16,7 @@ export default {
         }
     },
     methods: {
-        query(type, val) {
+        query(type, val, label) {
             var params = this.$store.getters['principal/url'].split("?");
             var urlParams = new URLSearchParams(this.$store.getters['principal/url'].split('?')[1]);
             if(!urlParams.has('f['+ type +'][]')){
@@ -25,23 +25,12 @@ export default {
             else urlParams.append('f['+ type +'][]', val);
 
             this.$store.commit('principal/set_url', params[0] + "?" + urlParams.toString());
-			this.$store.dispatch('principal/get_data');
+            this.$store.dispatch('principal/get_data');
+            this.$store.commit('filters/set_filter', {label, val, type});
 
 		},
-        delete_query: function (type, val) {
-            var params = this.$store.getters['principal/url'].split("?");
-            var urlParams = new URLSearchParams(this.$store.getters['principal/url'].split('?')[1]);
-            var urlParamsTmp = new URLSearchParams(urlParams.toString());
-            urlParams.forEach(function(value, key) {
-                if(key == 'f['+ type +'][]' && value == val)
-                    urlParams.delete('f['+ type +'][]');
-            });
-            urlParamsTmp.forEach(function(value, key) {
-                if(key == 'f['+ type +'][]' && value != val)
-                    urlParams.append(key, value)
-            });
-            this.$store.commit('principal/set_url', params[0] + "?" + urlParams.toString());
-			this.$store.dispatch('principal/get_data');
+        delete_query: function (type, val, label) {
+            this.$store.dispatch('filters/delete_query', {type, val, label});
 		},
         get_data_facet(val) {
             this.facet_label = val

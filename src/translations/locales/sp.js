@@ -28,5 +28,9 @@ export default{
     sp: 'Español',
     subject_sim: 'Tema',
     close: 'Cerrar',
-    more: 'más'
+    more: 'más',
+    download: 'Descargar',
+    down_label: 'Descargar PDF',
+    filters: 'Filtros',
+    remove: 'Eliminar Filtro'
 }

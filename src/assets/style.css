@@ -516,3 +516,20 @@
   margin: 0px;
   float: left;
 }
+
+.remove{
+  padding: 8px;;
+}
+
+.filter{
+  margin: 0px 3px;
+}
+
+.filter > .btn{
+  border: 1px solid #6b163a;
+  background: whitesmoke;
+}
+
+.remove-all{
+  float: right;
+}

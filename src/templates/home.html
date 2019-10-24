@@ -16,36 +16,36 @@
 </template>
 <template id="docs">
     <div>
-            <div class="row" v-for="doc in docs">
-                <router-link :to="{path: 'docs', query: {id: doc.id, has_model: doc.has_model, thumbnail: doc.thumbnail_path_ss}}">
-                    <h2> {{ doc.title[0] }}</h2>
-                </router-link>
-                <div class="col-sm-3">
-                    <img class="img-responsive" :src="'http://biblio-rep.colmex.mx'+ doc.thumbnail_path_ss ">
-                </div>
-                <div class="col-sm-9">
-                    <table class="table">
-                        <tbody>
-                            <tr v-for="(metadata, key, index) in doc" v-if="check_metadata(metadata, key)">
-                                <th>
-                                    {{ $t(key) }}
-                                </th>
-                                <td v-if="isObject(metadata)">
-                                    <p v-for="m in metadata">
-                                        {{ m }}
-                                    </p>
-                                </td>
-                                <td v-else>
-                                    <p>
-                                        {{ metadata }}
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="row" v-for="doc in docs">
+            <router-link :to="{path: 'docs', query: {id: doc.id, has_model: doc.has_model, thumbnail: doc.thumbnail_path_ss, related: doc.hasRelatedMediaFragment}}">
+                <h2> {{ doc.title[0] }}</h2>
+            </router-link>
+            <div class="col-sm-3">
+                <img class="img-responsive" :src="'http://biblio-rep.colmex.mx'+ doc.thumbnail_path_ss ">
+            </div>
+            <div class="col-sm-9">
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(metadata, key, index) in doc" v-if="check_metadata(metadata, key)">
+                            <th>
+                                {{ $t(key) }}
+                            </th>
+                            <td v-if="isObject(metadata)">
+                                <p v-for="m in metadata">
+                                    {{ m }}
+                                </p>
+                            </td>
+                            <td v-else>
+                                <p>
+                                    {{ metadata }}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 </template>
 <template id="pages">
     <div>
@@ -82,6 +82,17 @@
 </template>
 <template id="helperbar">
     <div>
+            <div style="margin-top: 10px;" v-if="filters.length > 0">
+                    <label>{{$t('filters')}}: </label>
+                    <span class="btn-group appliedFilter constraint filter filter-resource_type_sim" v-for="filter in filters">
+                        <span class="constraint-value btn btn-sm btn-default btn-disabled">
+                            <span class="filterName">{{filter.key}} > </span>
+                            <span class="filterValue" :title="filter.value">{{filter.value}}</span>
+                        </span>                  
+                      <a class="btn btn-default btn-sm remove dropdown-toggle" href="#" @click="delete_query(filter.type, filter.value, filter.key)" :title="$t('remove') + ':' + filter.value"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove </span></a>
+                  </span>
+                  <a class="remove-all" href="#" @click="delete_all()" >Remove All</a>
+            </div>
             <div>
                 <nav aria-label="Paginas disponibles" style="text-align: left; width: 30%; display: inline">
                     <ul class="pagination">
@@ -160,13 +171,13 @@
                             <li v-for="item in facet.items.slice(0, 5)" class="list-group-item">
                                 <span v-if="compare_params(facet.name, item.value)" class="facet-label">
                                     <span class="selected">{{item.label}}</span>
-                                    <a class="remove" @click="delete_query(facet.name, item.value)">
+                                    <a class="remove" @click="delete_query(facet.name, item.value, $t(facet.label.toLowerCase()))">
                                         <span class="glyphicon glyphicon-remove"></span>
                                         <span class="sr-only">[remove]</span>
                                     </a>
                                 </span>
                                 <span v-else class="facet-label">
-                                    <a @click="query(facet.name,item.value)">{{item.label}}</a>
+                                    <a @click="query(facet.name,item.value, $t(facet.label.toLowerCase()))">{{item.label}}</a>
                                 </span>
                             </li>
                             <li class="list-group-item facet-label" v-if="facet.items.length > 5  ">
