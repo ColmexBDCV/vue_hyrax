@@ -15,9 +15,8 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 _Tener montado un repositorio con el framework [Samvera](http://samvera.org)_
 
-```
-    Por ejemplo: [COLMEX REPOSITORY](http://biblio-rep.colmex.mx/catalog)
-```
+
+* Por ejemplo: [COLMEX REPOSITORY](http://biblio-rep.colmex.mx/catalog)
 
 ### Instalación 🔧
 
@@ -35,11 +34,11 @@ Montar un servidor de aplicaciones, en nuestro caso montamos un servidor apache 
 
 ## Construido con 🛠️
 
-* [VueJs](http://www.dropwizard.io/1.0.2/docs/) - Framework base
-* [Vuex](https://maven.apache.org/) - Modularizar el proyecto
-* [VueRouter](https://rometools.github.io/rome/) - Utilizar rutas y enviar parametros.
-* [Vue-i18n](https://rometools.github.io/rome/) - Traducir el proyecto.
-* [Axios](https://rometools.github.io/rome/) - Envio y recepcion de peticiones
+* [VueJs](https://vuejs.org/v2/guide/) - Framework base
+* [Vuex](https://vuex.vuejs.org/guide/) - Modularizar el proyecto
+* [VueRouter](https://router.vuejs.org/guide/#javascript) - Utilizar rutas y enviar parametros.
+* [Vue-i18n](https://kazupon.github.io/vue-i18n/started.html) - Traducir el proyecto.
+* [Axios](https://github.com/axios/axios) - Envio y recepcion de peticiones
 
 ## Versionado 📌
 
@@ -49,6 +48,6 @@ Usamos [GitHub](https://github.com/) para el versionado. Para todas las versione
 
 
 * **Rodrigo Cuellar Hidalgo** - *Idea y Trabajo Inicial* - [rodyoukai](https://github.com/rodyoukai)
-* **Eime Javier Cisneros Brito** - *Continuación y Documentación* - [zizneroz](#zizneroz)
+* **Eime Javier Cisneros Brito** - *Continuación y Documentación* - [zizneroz](https://github.com/zizneroz)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/ColmexBDCV/vue_hyrax/contributors) quíenes han participado en este proyecto.
