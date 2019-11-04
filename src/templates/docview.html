@@ -22,13 +22,21 @@
                             </th>
                             <td v-if="typeof metadata == 'object'">
                                 <p v-for="m in metadata">
-                                    {{ m }}
+                                    <span v-if="key == 'related_url'">                                        
+                                        <a :href='m'>{{ m }}</a>
+                                    </span>
+                                    <span v-else>
+                                        {{ m }}
+                                    </span>
                                 </p>
                             </td>
                             <td v-else>
-                                <p>
+                                <span v-if="key == 'related_url'">
+                                    <a :href="metadata">{{ metadata }}</a>
+                                </span>
+                                <span v-else>
                                     {{ metadata }}
-                                </p>
+                                </span>
                             </td>
                         </tr>
                         <tr v-if="related != undefined">

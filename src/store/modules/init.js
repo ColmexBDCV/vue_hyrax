@@ -1,9 +1,11 @@
+import config from '../../utils/config.js'
+
 export default {
     namespaced: true,
     state: {
         repo: '',
-        base_url: 'http://biblio-rep.colmex.mx/',
-        url: "http://biblio-rep.colmex.mx/catalog.json",
+        base_url: config.base_url,
+        url: config.url,
         modalFacets: false
     },
     mutations: {

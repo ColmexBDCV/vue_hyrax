@@ -1,4 +1,5 @@
 import facetModal from './facetModal.vue.js'
+import config from '../utils/config.js'
 
 export default {
     name: "facets",
@@ -56,7 +57,7 @@ export default {
     },
     computed:{
         facet_url() {
-			return "http://biblio-rep.colmex.mx/catalog/facet/" + this.facet_label + ".json?facet.page=" + this.facet_page + "&facet.sort=" + this.facet_sort
+			return config.facet_url + this.facet_label + ".json?facet.page=" + this.facet_page + "&facet.sort=" + this.facet_sort
         },
         showModal(){
 			return this.$store.state.principal.modalFacets;
