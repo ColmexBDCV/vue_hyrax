@@ -5,8 +5,8 @@ _Proyecto creado en VueJS, Vuex, Vue Router y Vue-i18n consumiendo un servico de
 ## Comenzando 🚀
 
 _Para copiar o clonar el proyecto, puedes hacerlo con alguna de las sguientes formas: 
- -Utilizar el comando ´git clone´ en la carpeta de tu eleccion.
- -Descargar el proyecto en .zip y descomprimir_
+ * Utilizar el comando ´git clone´ en la carpeta de tu eleccion.
+ * Descargar el proyecto en .zip y descomprimir_
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
